@@ -1,0 +1,10 @@
+<div class="container">
+	<header><h1>Application Inside of API</h1></header>
+	<a href="/posts/new">Create a Post!</a>
+	{{#each posts}}
+		<div id="post-{{this.id}}">
+			<h1>{{this.title}}</h1>
+			<p>{{this.content}}</p>
+		</div>
+	{{/each}}
+</div>

@@ -17,9 +17,13 @@ require 'logger'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'sinatra/multi_route'
+require 'sinatra/cross_origin'
+require 'sinatra/handlebars'
 
 require 'erb'
 require 'bcrypt'
+
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -27,6 +31,8 @@ APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
 configure do
+	# Enable Cross Origin Resource Sharing
+	enable :cross_origin
   # By default, Sinatra assumes that the root is the file that calls the configure block.
   # Since this is not the case for us, we set it manually.
   set :root, APP_ROOT.to_path
@@ -36,6 +42,14 @@ configure do
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
+end
+
+options "/*" do
+  response.headers["Allow"] = "HEAD,GET,POST,PUT,DELETE,OPTIONS"
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+  # response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+  200
 end
 
 # Set up the controllers and helpers
