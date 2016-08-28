@@ -1,1 +1,1 @@
-# handlebars-react-workshop
+# Sinatra with Handlebars
