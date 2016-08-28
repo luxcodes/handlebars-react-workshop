@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- If IE use the latest rendering engine -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Set the page to the width of the device and set the zoom level -->
+	<meta name="viewport" content="width = device-width, initial-scale = 1">
+  <title>Handlebars/React</title>
+</head>
+<body>
+	<div class="container">
+		
+		<div class="posts">
+			<header><h1>Application Outside of API</h1></header>
+			<div>
+				<a href="http://localhost:9393/posts/new">Create a Post!</a>
+			</div>
+		</div>
+
+		<div class="new-post-form"></div>
+
+
+		<script id="post" type="text/x-handlebars-template">
+			{{#each posts}}
+				<div id="post">
+				<h1>{{title}}</h1>
+				<p>{{content}}</p>
+				</div>
+			{{/each}}
+		</script>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
