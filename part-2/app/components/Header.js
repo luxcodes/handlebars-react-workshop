@@ -6,7 +6,7 @@ export default class Header extends React.Component {
 	constructor() {
 		super();
 		this.handleChange = this.handleChange.bind(this);
-		
+
 	}
 
 	handleChange(e) {
@@ -19,9 +19,6 @@ export default class Header extends React.Component {
 	render() {
 		return(
 			<div>
-				<Title/>
-				<Title/>
-				<Title/>
 				<h1>{this.props.title}</h1>
 				<input onChange={this.handleChange}/>
 			</div>
